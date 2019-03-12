@@ -1,2 +1,2 @@
 # Esiflix
-Tienda online de películas
+Tienda online de películas.
