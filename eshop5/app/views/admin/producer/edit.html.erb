@@ -1,0 +1,7 @@
+<%= form_tag :action => 'update', :id => @producer do %>
+  <%= render :partial => 'form' %>
+  <%= submit_tag 'Actualizar productora' %>
+<% end %>
+
+<%= link_to 'Mostrar', :action => 'show', :id => @producer %> |
+<%= link_to 'Atrás', :action => 'index' %>

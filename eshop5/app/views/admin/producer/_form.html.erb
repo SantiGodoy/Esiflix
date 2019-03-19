@@ -1,0 +1,15 @@
+<% if @producer.errors.any? %>
+  <div id="errorExplanation">
+  <h2>Esta productora no se puede guardar debido a <%= pluralize(@producer.errors.count, "error", "errores") %>:</h2>
+    <ul>
+      <% @producer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="field">
+  <p><label for="producer_name">Nombre</label><br/>
+  <%= text_field 'producer', 'name' %></p>
+</div>
