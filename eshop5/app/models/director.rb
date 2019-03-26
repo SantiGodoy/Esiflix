@@ -1,5 +1,6 @@
 class Director < ApplicationRecord
-  validates_presence_of :first_name, :last_name, :message => 'Debe introducir un nombre y un apellido.'
+  validates_presence_of :first_name, :message => 'Debe introducir un nombre.'
+  validates_presence_of :last_name, :message => 'Debe introducir un apellido.'
 
   def name
     "#{first_name} #{last_name}"
