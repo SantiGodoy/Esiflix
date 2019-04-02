@@ -54,11 +54,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'rails-controller-testing', '1.0.2'
 
-# gem 'RedCloth', '4.3.2'
+gem 'RedCloth', '4.3.2'
 
-# gem 'paperclip', '4.3.7'
+gem 'paperclip', '4.3.7'
 
-# gem 'will_paginate', '3.1.6'
+gem 'will_paginate', '3.1.6'
 
 # gem 'authlogic', '3.6.1'
 
