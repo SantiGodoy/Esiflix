@@ -1,0 +1,7 @@
+<%= form_tag "/admin/film/update?id=#{@film.id}", :multipart => true do %>
+  <%= render :partial => 'form' %>
+  <%= submit_tag 'Actualizar película' %>
+<% end %>
+
+<%= link_to 'Mostrar', :action => 'show', :id => @film %> |
+<%= link_to 'Atrás', :action => 'index' %>

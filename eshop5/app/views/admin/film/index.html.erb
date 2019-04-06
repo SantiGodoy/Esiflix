@@ -1,0 +1,24 @@
+<table>
+  <tr>
+    <th><a href="?sort_by=producer_id">Productora</a></th>
+    <th><a href="?sort_by=title">Título</a></th>
+    <th><a href="?sort_by=kind">Tipo</a></th>
+    <th colspan="3"></th>
+  </tr>
+
+<% @films.each do |film| %>
+  <tr>
+    <td><%= h film.producer.name %></td>
+    <td><%= h film.title %></td>
+    <td><%= h film.kind %></td>
+    <td><%= link_to 'Mostrar', :action => 'show', :id => film %></td>
+    <td><%= link_to 'Editar', :action => 'edit', :id => film  %></td>
+    <td><%= button_to 'Eliminar', { :action => 'destroy', :id => film },
+                      data: { confirm: "¿Está seguro de que quiere eliminar la película #{film.title}?" } %>
+  </tr>
+<% end %>
+</table>
+<br/>
+<%= will_paginate @films, :page_links => false, :link_separator => ' | ',
+                          :previous_label => 'Página anterior', :next_label => 'Página siguiente' %>
+<p><%= link_to 'Añadir una nueva película', :action => 'new' %></p>

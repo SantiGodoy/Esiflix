@@ -1,0 +1,6 @@
+<%= form_tag "/admin/film/create", :multipart => true do %>
+  <%= render :partial => 'form' %>   
+  <%= submit_tag 'Crear película' %>
+<% end %>
+
+<%= link_to 'Atrás', :action => 'index' %>

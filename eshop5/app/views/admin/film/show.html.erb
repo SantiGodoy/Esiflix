@@ -1,0 +1,28 @@
+<dl>
+  <dt>Título</dt>
+  <dd><%= @film.title %></dd>
+  <dt>Productora</dt>
+  <dd><%= @film.producer.name %></dd>
+  <dt>Producida el</dt>
+  <dd><%= @film.produced_at.strftime("%d/%m/%Y a las %I:%M%p") %></dd>
+  <dt>Directores</dt>
+  <dd><%= @film.director_names %></dd>
+  <dt>Tipo</dt>
+  <dd><%= @film.kind %></dd>
+  <dt>Descripción</dt>
+  <%= RedCloth.new(@film.blurb).to_html.html_safe if @film.blurb %>
+  <dt>Precio</dt>
+  <dd><%= @film.price %></dd>
+  <dt>Duración</dt>
+  <dd><%= @film.duration %></dd>
+  <dt>Imagen de portada</dt>
+  <% if @film.cover_image.exists? then %>
+    <dd><%= image_tag @film.cover_image.url %></dd>
+  <% else %>
+    <dd><%= image_tag '/missing.png' %></dd>
+    <p> No hay imagen de portada. Por favor, adjunte una. </p>
+  <% end %>
+</dl>
+
+<%= link_to 'Editar', :action => 'edit', :id => @film %> |
+<%= link_to 'Atrás', :action => 'index' %>

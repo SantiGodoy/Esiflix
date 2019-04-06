@@ -1,12 +1,22 @@
 Rails.application.routes.draw do
-  
+
   root :to => 'about#index'
 
   get 'about' => 'about#index'
+  get 'admin/film' => 'admin/film#index'
   get 'admin/director' => 'admin/director#index'
   get 'admin/producer' => 'admin/producer#index'
 
   get 'about/index'
+
+  get 'admin/film/new'
+  post 'admin/film/create'
+  get 'admin/film/edit'
+  post 'admin/film/update'
+  post 'admin/film/destroy'
+  get 'admin/film/show'
+  get 'admin/film/show/:id' => 'admin/film#show'
+  get 'admin/film/index'
   
   get 'admin/producer/new'
   post 'admin/producer/create'
