@@ -1,0 +1,3 @@
+<%= render :partial => 'films' %>
+<%= will_paginate @films, :page_links => false, :link_separator => ' | ',
+                          :previous_label => 'Página anterior', :next_label => 'Página siguiente' %>

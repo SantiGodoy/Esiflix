@@ -7,7 +7,7 @@
   <dd><%= @film.produced_at.strftime("%d/%m/%Y a las %I:%M%p") %></dd>
   <dt>Directores</dt>
   <dd><%= @film.director_names %></dd>
-  <dt>Tipo</dt>
+  <dt>Formato</dt>
   <dd><%= @film.kind %></dd>
   <dt>Descripción</dt>
   <%= RedCloth.new(@film.blurb).to_html.html_safe if @film.blurb %>

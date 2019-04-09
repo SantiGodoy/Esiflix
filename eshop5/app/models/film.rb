@@ -21,7 +21,7 @@ class Film < ApplicationRecord
     self.directors.map{|director| director.name}.join(", ")
   end
 
-  #def self.latest(num)
-    #all.order("films.id desc").includes(:directors, :producer).limit(num)
-  #end
+  def self.latest(num)
+    all.order("films.id desc").includes(:directors, :producer).limit(num)
+  end
 end

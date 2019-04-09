@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root :to => 'about#index'
+  root :to => 'catalog#index'
 
   get 'about' => 'about#index'
   get 'admin/film' => 'admin/film#index'
@@ -9,14 +9,14 @@ Rails.application.routes.draw do
 
   get 'about/index'
 
-  get 'admin/film/new'
-  post 'admin/film/create'
-  get 'admin/film/edit'
-  post 'admin/film/update'
-  post 'admin/film/destroy'
-  get 'admin/film/show'
-  get 'admin/film/show/:id' => 'admin/film#show'
-  get 'admin/film/index'
+  get 'admin/director/new'
+  post 'admin/director/create'
+  get 'admin/director/edit'
+  post 'admin/director/update'
+  post 'admin/director/destroy'
+  get 'admin/director/show'
+  get 'admin/director/show/:id' => 'admin/director#show'
+  get 'admin/director/index' 
   
   get 'admin/producer/new'
   post 'admin/producer/create'
@@ -27,14 +27,19 @@ Rails.application.routes.draw do
   get 'admin/producer/show/:id' => 'admin/producer#show'
   get 'admin/producer/index'
 
-  get 'admin/director/new'
-  post 'admin/director/create'
-  get 'admin/director/edit'
-  post 'admin/director/update'
-  post 'admin/director/destroy'
-  get 'admin/director/show'
-  get 'admin/director/show/:id' => 'admin/director#show'
-  get 'admin/director/index'  
+  get 'admin/film/new'
+  post 'admin/film/create'
+  get 'admin/film/edit'
+  post 'admin/film/update'
+  post 'admin/film/destroy'
+  get 'admin/film/show'
+  get 'admin/film/show/:id' => 'admin/film#show'
+  get 'admin/film/index'
+
+  get 'catalog/show'
+  get 'catalog/show/:id' => 'catalog#show'
+  get 'catalog/index'
+  get 'catalog/latest'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
