@@ -6,7 +6,7 @@
     <% for director in film.directors %>
       <dd><%= director.last_name %>, <%= director.first_name %></dd>
     <% end %>
-    <dd><%= sprintf("Duración: %s. Precio: %.2f €", pluralize(film.duration, "minutos"), film.price) %> </dd>
+    <dd><%= sprintf("Duración: %s. Precio: %.2f €", pluralize(film.duration, "minuto"), film.price) %> </dd>
     <dd><small>Productora: <%= film.producer.name %></small></dd>
   <% end %>
 </dl>

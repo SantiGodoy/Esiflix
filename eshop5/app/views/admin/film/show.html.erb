@@ -12,9 +12,9 @@
   <dt>Descripción</dt>
   <%= RedCloth.new(@film.blurb).to_html.html_safe if @film.blurb %>
   <dt>Precio</dt>
-  <dd><%= @film.price %></dd>
+  <dd><%= sprintf("%0.2f €", @film.price) %></dd>
   <dt>Duración</dt>
-  <dd><%= @film.duration %></dd>
+  <dd><%= pluralize(@film.duration, "minuto") %></dd>
   <dt>Imagen de portada</dt>
   <% if @film.cover_image.exists? then %>
     <dd><%= image_tag @film.cover_image.url %></dd>

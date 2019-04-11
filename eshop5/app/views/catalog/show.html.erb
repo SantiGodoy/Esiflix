@@ -6,9 +6,9 @@
 <% end %>
 <dl>
   <dt>Precio</dt>
-  <dd><%= sprintf("%0.2f", @film.price) %></dd>
+  <dd><%= sprintf("%0.2f €", @film.price) %></dd>
   <dt>Duración</dt>
-  <dd><%= @film.duration %></dd>
+  <dd><%= pluralize(@film.duration, "minuto") %></dd>
   <dt>Productora</dt>
   <dd><%= @film.producer.name %></dd>
   <dt>Descripción</dt>
