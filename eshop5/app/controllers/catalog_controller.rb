@@ -1,6 +1,6 @@
 # coding: utf-8
 class CatalogController < ApplicationController
-  #before_action :initialize_cart, :except => :show
+  before_action :initialize_cart, :except => :show
   #before_action :require_no_user
 
   def show

@@ -2,6 +2,7 @@
   <% for film in @films %>
     <dt>
       <%= link_to film.title, :action => 'show', :id => film %>
+      <%= link_to '+', :controller => 'cart', :action => 'add', :id => film %>
     </dt>
     <% for director in film.directors %>
       <dd><%= director.last_name %>, <%= director.first_name %></dd>

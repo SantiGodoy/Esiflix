@@ -40,13 +40,6 @@ Rails.application.routes.draw do
   get 'catalog/show/:id' => 'catalog#show'
   get 'catalog/index'
   get 'catalog/latest'
-
-  get 'cart/add'
-  post 'cart/add'
-  get 'cart/remove'
-  post 'cart/remove'
-  get 'cart/clear'
-  post 'cart/clear'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
