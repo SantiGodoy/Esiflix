@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190423105000) do
+ActiveRecord::Schema.define(version: 20190501101220) do
 
   create_table "cart_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "film_id"
@@ -59,6 +59,32 @@ ActiveRecord::Schema.define(version: 20190423105000) do
     t.index ["producer_id"], name: "fk_films_producers"
   end
 
+  create_table "order_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "film_id"
+    t.bigint "order_id"
+    t.float "price", limit: 24
+    t.integer "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "fk_order_items_orders"
+  end
+
+  create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "email"
+    t.string "phone_number"
+    t.string "ship_to_first_name"
+    t.string "ship_to_last_name"
+    t.string "ship_to_address"
+    t.string "ship_to_city"
+    t.string "ship_to_postal_code"
+    t.string "ship_to_country_code"
+    t.string "customer_ip"
+    t.string "status"
+    t.string "error_message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "producers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -68,4 +94,5 @@ ActiveRecord::Schema.define(version: 20190423105000) do
   add_foreign_key "directors_films", "directors", name: "fk_directors_films_directors", on_delete: :cascade
   add_foreign_key "directors_films", "films", name: "fk_directors_films_films", on_delete: :cascade
   add_foreign_key "films", "producers", name: "fk_films_producers", on_delete: :cascade
+  add_foreign_key "order_items", "orders", name: "fk_order_items_orders", on_delete: :cascade
 end

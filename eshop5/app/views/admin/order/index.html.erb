@@ -1,0 +1,45 @@
+<% if @orders == [] %>
+  <% if @status == 'all' %>
+    <h2><%= "No hay pedidos." %></h2>
+  <% else %>
+    <h2><%= "No hay pedidos con el estado '#{@estado}'." %></h2>
+  <% end %>
+<% else %>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Estado</th>
+      <th>Precio total</th>
+      <th>Cantidad</th>
+      <th>Creado el</th>
+      <th>Actualizado el</th>
+      <th></th>
+    </tr>
+  <% for order in @orders %>
+    <% estado = 'procesado' if order.status == 'processed'
+       estado = 'fallido' if order.status == 'failed'
+       estado = 'abierto' if order.status == 'open'
+       estado = 'cerrado' if order.status == 'closed' %>
+    <tr>
+      <td align="center"><%= order.id %></td>
+      <td align="center"><%= estado.capitalize %></td>
+      <td align="center"><%= order.total %></td>
+      <td align="center"><%= order.amount %></td>
+      <td align="center"><%= order.created_at.strftime("%d-%m-%Y %H:%M") %></td>
+      <td align="center"><%= order.updated_at.strftime("%d-%m-%Y %H:%M") %></td>
+      <td><%= link_to 'Mostrar', :action => 'show', :id => order %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <% if @orders.total_pages > 1 %>
+    <br/>
+    <%= 'Ver página:' %>
+  <% end %>
+
+  <%= will_paginate @orders, :page_links => true, :link_separator => ' ', :container => false,
+                             :previous_label => '', :next_label => '' %>
+  <p></p>
+<% end %>
+
+<%= render :partial => 'navigation' %>

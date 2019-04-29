@@ -8,7 +8,7 @@ class Film < ApplicationRecord
 
   has_attached_file :cover_image
   validates_attachment :cover_image,
-  :content_type => { :content_type => ["image/jpeg", "image/gif", "image/png"] }
+  :content_type => { :content_type => ["image/jpeg", "image/gif", "image/png"] }, :message => 'Error al incluir imagen.'
 
   validates_length_of :title, :in => 1..255, :message => 'El título de la película no está dentro de los límites [1...255].'
   validates_presence_of :producer, :message => 'Debe seleccionar una productora.'

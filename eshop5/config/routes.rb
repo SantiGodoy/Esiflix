@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   root :to => 'catalog#index'
 
   get 'about' => 'about#index'
-  get 'admin/film' => 'admin/film#index'
+  get 'checkout' => 'checkout#index'
   get 'admin/director' => 'admin/director#index'
   get 'admin/producer' => 'admin/producer#index'
+  get 'admin/film' => 'admin/film#index'
+  get 'admin/order' => 'admin/order#index'
 
   get 'about/index'
 
@@ -36,6 +38,12 @@ Rails.application.routes.draw do
   get 'admin/film/show/:id' => 'admin/film#show'
   get 'admin/film/index'
 
+  post 'admin/order/close'
+  post 'admin/order/destroy'
+  get 'admin/order/show'
+  get 'admin/order/show/:id' => 'admin/order#show'
+  get 'admin/order/index'
+
   get 'catalog/show'
   get 'catalog/show/:id' => 'catalog#show'
   get 'catalog/index'
@@ -47,6 +55,10 @@ Rails.application.routes.draw do
   post 'cart/remove'
   get 'cart/clear'
   post 'cart/clear'
+
+  get 'checkout/index'
+  post 'checkout/submit_order'
+  get 'checkout/thank_you'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
