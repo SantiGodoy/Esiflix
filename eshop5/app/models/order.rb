@@ -11,24 +11,24 @@ class Order < ApplicationRecord
   validates_presence_of :order_items,
                         :message => '¡Su carrito de la compra está vacío! ' +
                                     'Por favor, agregue al menos una película antes de realizar el pedido.'
-  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :message => 'Debe introducir un correo válido.'
-  validates_length_of :phone_number, :in => 7..20, :message => 'Debe introducir un número de teléfono válido.'
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :message => 'El formato de correo no es válido.'
+  validates_length_of :phone_number, :in => 7..20, :message => 'El teléfono debe tener entre 7 y 20 dígitos.'
 
-  validates_length_of :ship_to_first_name, :in => 2..255, :message => 'Nombre no válido.'
-  validates_length_of :ship_to_last_name, :in => 2..255, :message => 'Apellido no válido.'
-  validates_length_of :ship_to_address, :in => 2..255, :message => 'Dirección no válida.'
-  validates_length_of :ship_to_city, :in => 2..255, :message => 'Ciudad no válida.'
-  validates_length_of :ship_to_postal_code, :in => 2..255, :message => 'Código postal no válido.'
-  validates_length_of :ship_to_country_code, :in => 2..255, :message => 'Código de país no válido.'
+  validates_length_of :ship_to_first_name, :in => 2..255, :message => 'El nombre no se ajusta a la longitud válida [2...255].'
+  validates_length_of :ship_to_last_name, :in => 2..255, :message => 'El apellido no se ajusta a la longitud válida [2...255].'
+  validates_length_of :ship_to_address, :in => 2..255, :message => 'La dirección no se ajusta a la longitud válida [2...255].'
+  validates_length_of :ship_to_city, :in => 2..255, :message => 'La ciudad no se ajusta a la longitud válida [2...255].'
+  validates_length_of :ship_to_postal_code, :in => 2..255, :message => 'El código postal no se ajusta a la longitud válida [2...255].'
+  validates_length_of :ship_to_country_code, :in => 2..255
 
   validates_length_of :customer_ip, :in => 7..15
   validates_inclusion_of :status, :in => %w(open processed closed failed)
 
   validates_inclusion_of :card_type, :in => ['Visa', 'MasterCard', 'American Express', 'Discover'], :on => :create
-  validates_length_of :card_number, :in => 13..19, :on => :create
+  validates_length_of :card_number, :in => 13..19, :on => :create, :message => 'La tarjeta debe tener entre 13 y 19 dígitos.'
   validates_inclusion_of :card_expiration_month, :in => %w(1 2 3 4 5 6 7 8 9 10 11 12), :on => :create
   validates_inclusion_of :card_expiration_year, :in => %w(2017 2018 2019 2020 2021 2022), :on => :create
-  validates_length_of :card_verification_value, :in => 3..4, :on => :create
+  validates_length_of :card_verification_value, :in => 3..4, :on => :create, :message => 'El código de verificación de la tarjeta debe tener 3 o 4 dígitos'
 
   def total
     sum = 0
