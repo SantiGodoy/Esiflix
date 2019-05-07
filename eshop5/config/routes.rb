@@ -56,9 +56,21 @@ Rails.application.routes.draw do
   get 'cart/clear'
   post 'cart/clear'
 
+  get 'user_sessions/new'
+  get 'user_sessions/create' # for showing failed login screen after restarting web server
+  post 'user_sessions/create'
+  get 'user_sessions/destroy'
+
   get 'checkout/index'
   post 'checkout/submit_order'
   get 'checkout/thank_you'
+  
+  get 'user/new'
+  post 'user/create'
+  get 'user/show'
+  get 'user/show/:id' => 'user#show'
+  get 'user/edit'
+  post 'user/update'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

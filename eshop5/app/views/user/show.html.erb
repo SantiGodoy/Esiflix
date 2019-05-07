@@ -1,0 +1,34 @@
+<dl>
+  <dt>Nombre</dt>
+  <dd><%= @user.name %></dd>
+
+  <dt>Usuario</dt>
+  <dd><%= @user.login %></dd>
+
+  <dt>Correo electrónico</dt>
+  <dd><%= @user.email %></dd>
+
+  <dt>Número de sesiones</dt>
+  <dd><%= @user.login_count %></dd>
+
+  <dt>Última petición</dt>
+  <dd><%= @user.last_request_at %></dd>
+
+  <% if @user.last_login_at %>
+    <dt>Sesión anterior</dt>
+    <dd><%= @user.last_login_at %></dd>
+  <% end %>
+
+  <dt>Sesión actual</dt>
+  <dd><%= @user.current_login_at %></dd>
+
+  <% if @user.last_login_ip %>
+    <dt>IP de sesión anterior</dt>
+    <dd><%= @user.last_login_ip %></dd>
+  <% end %>
+
+  <dt>IP de sesión actual</dt>
+  <dd><%= @user.current_login_ip %></dd>
+</dl>
+
+<%= link_to 'Editar', :action => 'edit' %>

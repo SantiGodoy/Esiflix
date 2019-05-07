@@ -60,7 +60,7 @@ gem 'paperclip', '4.3.7'
 
 gem 'will_paginate', '3.1.6'
 
-#gem 'authlogic', '3.6.1'
+gem 'authlogic', '3.6.1'
 
 gem 'countries', '2.1.2'
 
