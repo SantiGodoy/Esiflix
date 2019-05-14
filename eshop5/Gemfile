@@ -67,3 +67,7 @@ gem 'countries', '2.1.2'
 gem 'country_select', '3.1.1'
 
 gem 'activemerchant', '1.73.0'
+
+gem 'jquery-rails', '4.3.1'
+
+gem 'jquery-ui-rails', '6.0.1'
