@@ -9,6 +9,7 @@ class BrowsingAndSearchingTest < ActionDispatch::IntegrationTest
     jill.second_page
     jill.film_details 'Pride and Prejudice'
     jill.latest_films
+    jill.reads_rss
   end
 
   module BrowsingTestDSL
@@ -76,6 +77,24 @@ class BrowsingAndSearchingTest < ActionDispatch::IntegrationTest
       session.extend(BrowsingTestDSL)
       session.name = name
       yield session if block_given?
+    end
+  end
+
+  def reads_rss
+    get "/catalog/rss"
+    assert_response :success
+    assert_template "catalog/rss"
+    assert_match "application/xml", response.headers["Content-Type"]
+
+    assert_select 'channel' do
+      assert_select 'item', :count => 5
+    end
+
+    @films = Film.latest(5)
+    @films.each do |film|
+      assert_select 'item' do
+        assert_select 'title', film.title
+      end
     end
   end
 end
