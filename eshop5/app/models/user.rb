@@ -15,4 +15,11 @@ class User < ApplicationRecord
   validates_presence_of :name, :login, :email, :password, :password_confirmation, :message => 'no puede estar vacío'
   validates_length_of :name, :in => 3..225, :message => 'es demasiado corto (mínimo 3 caracteres)'
   validates_uniqueness_of :name, :login, :email, :message => 'ya existe'
+
+  def deliver_password_reset_instructions
+    self.reset_perishable_token!
+    save(validate: false)
+    
+    Notifier.password_reset_instructions(self).deliver_now
+  end
 end

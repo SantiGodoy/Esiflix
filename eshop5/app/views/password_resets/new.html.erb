@@ -1,0 +1,8 @@
+<h1>Restaurar contraseña</h1>
+ 
+<p>Por favor, introduce su correo electrónico y luego presione "Restaurar contraseña".</p>
+ 
+<%= form_tag password_resets_path do %>
+  <%= text_field_tag :email %>
+  <%= submit_tag "Restaurar contraseña" %>
+<% end %>

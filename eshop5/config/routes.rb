@@ -72,6 +72,10 @@ Rails.application.routes.draw do
   get 'user/show/:id' => 'user#show'
   get 'user/edit'
   post 'user/update'
+
+  resources :password_resets, only: [:new, :create]
+  get 'password_resets/edit' => 'password_resets#edit', as: :edit_password_reset
+  put 'password_resets/update' => 'password_resets#update', as: :password_reset
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
