@@ -28,6 +28,8 @@
       <td align="center"><%= order.created_at.strftime("%d-%m-%Y %H:%M") %></td>
       <td align="center"><%= order.updated_at.strftime("%d-%m-%Y %H:%M") %></td>
       <td><%= link_to 'Mostrar', :action => 'show', :id => order %></td>
+      <td><%= button_to 'Borrar', {:action => 'destroy', :id => order},
+	data: {confirm: "¿Estás seguro? La orden ##{order.id} se borrará para siempre."}%></td>
     </tr>
   <% end %>
   </table>
