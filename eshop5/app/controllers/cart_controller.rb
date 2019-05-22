@@ -9,13 +9,14 @@ class CartController < ApplicationController
       format.js { @item = @cart.add params[:id]
         flash.now[:cart_notice] = "Añadido <em>#{@item.film.title}</em>"
         render :controller => 'cart', :action => 'add_with_ajax' }
-      format.html { if request.post?
-        @item = @cart.add params[:id]
-        flash[:cart_notice] = "Añadido <em>#{@item.film.title}</em>."
-        redirect_to :controller => 'catalog'
-      else
-        render :controller => 'cart', :action => 'add', :template => 'cart/add'
-      end }
+      format.html {
+        if request.post?
+          @item = @cart.add params[:id]
+          flash[:cart_notice] = "Añadido <em>#{@item.film.title}</em>."
+          redirect_to :controller => 'catalog'
+        else
+          render :controller => 'cart', :action => 'add', :template => 'cart/add'
+        end }
     end
   end
   
