@@ -1,0 +1,24 @@
+<% if @user.errors.any? %>
+  <div id="errorExplanation">
+  <h2>Esta cuenta no puede ser creada debido a <%= pluralize(@user.errors.count, "error", "errores")%></h2>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="field">
+  <%= hidden_field :user, :id %>
+</div>
+
+<div class="field">
+  <p><label for="user_password">Contraseña</label><br/>
+  <%= password_field 'user', 'password' %></p>
+</div>
+
+<div class="field">
+  <p><label for="user_password_confirmation">Confirmar contraseña</label><br/>
+  <%= password_field 'user', 'password_confirmation' %></p>
+</div>

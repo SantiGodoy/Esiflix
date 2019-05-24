@@ -20,6 +20,6 @@ class User < ApplicationRecord
     self.reset_perishable_token!
     save(validate: false)
     
-    Notifier.password_reset_instructions(self).deliver_now
+    NotifierMailer.password_reset_instructions(self).deliver_now
   end
 end

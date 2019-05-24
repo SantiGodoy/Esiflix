@@ -1,0 +1,11 @@
+﻿Rellene el siguiente formulario y se les enviarán las instrucciones para restaurar su contraseña:
+
+<%= form_tag :action => 'create' do %>
+  <div class="field">
+    <p><label for="email">Correo electrónico</label><br/>
+    <%= text_field_tag 'email' %></p>
+  </div>
+  <%= submit_tag 'Enviar correo electrónico' %>
+<% end %>
+
+<%= link_to 'Catálogo', :controller => 'catalog' %>

@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-
+  
   root :to => 'catalog#index'
 
   get 'about' => 'about#index'
+  get 'forum' => 'forum#index'
   get 'checkout' => 'checkout#index'
   get 'admin/director' => 'admin/director#index'
   get 'admin/producer' => 'admin/producer#index'
@@ -73,9 +74,18 @@ Rails.application.routes.draw do
   get 'user/edit'
   post 'user/update'
 
-  resources :password_resets, only: [:new, :create]
-  get 'password_resets/edit' => 'password_resets#edit', as: :edit_password_reset
-  put 'password_resets/update' => 'password_resets#update', as: :password_reset
+  get 'forum/post'
+  post 'forum/create'
+  get 'forum/reply'
+  get 'forum/destroy'
+  post 'forum/destroy'
+  get 'forum/show'
+  get 'forum/index'
+
+  get 'password_reset/new'
+  post 'password_reset/create'
+  get 'password_reset/edit'
+  post 'password_reset/update'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190507110000) do
+ActiveRecord::Schema.define(version: 20190522181101) do
 
   create_table "cart_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "film_id"
@@ -57,6 +57,17 @@ ActiveRecord::Schema.define(version: 20190507110000) do
     t.integer "cover_image_file_size"
     t.datetime "cover_image_updated_at"
     t.index ["producer_id"], name: "fk_films_producers"
+  end
+
+  create_table "forum_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "name", limit: 50, null: false
+    t.string "subject", null: false
+    t.text "body"
+    t.bigint "root_id", default: 0, null: false
+    t.bigint "parent_id", default: 0, null: false
+    t.integer "depth", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "order_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
