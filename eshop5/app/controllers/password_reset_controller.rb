@@ -1,4 +1,3 @@
-# coding: utf-8
 class PasswordResetController < ApplicationController
   before_action :require_no_user
 

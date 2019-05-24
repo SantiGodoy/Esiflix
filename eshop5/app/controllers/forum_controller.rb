@@ -1,5 +1,5 @@
 class ForumController < ApplicationController
-  before_action :require_user, :only => :destroy
+  #before_action :require_user, :only => :destroy
 
   def post
     @post = ForumPost.new(:parent_id => 0, :root_id => 0, :depth => 0)

@@ -1,4 +1,4 @@
-# coding: utf-8
+# encoding: utf-8
 class NotifierMailer < ActionMailer::Base
   def password_reset_instructions(user)
     @edit_password_reset_url = url_for :controller => 'password_reset', :action=> 'edit'
