@@ -1,3 +1,4 @@
 <%= render :partial => 'films' %>
 <%= will_paginate @films, :page_links => false, :link_separator => ' | ',
                           :previous_label => 'Página anterior', :next_label => 'Página siguiente' %>
+<p><%= link_to 'Últimos articulos', :action => 'latest' %> | <%= link_to 'RSS', :action => 'rss' %> | <%= link_to 'Buscar', :action => 'search' %></p>

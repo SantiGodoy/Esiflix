@@ -23,4 +23,14 @@ class CatalogController < ApplicationController
     render :layout => false
     response.headers["Content-Type"] = "application/xml; version=1.0; charset=utf-8"
   end
+  
+  def search
+    @page_title = "Buscar"
+    if params[:commit] == "Buscar" || params[:q]
+      @films = Film.where 'title LIKE ?', "%#{params[:q]}%"
+      unless @films.size > 0
+        flash.now[:notice] = "No se ha encontrado la película."
+      end
+    end
+  end
 end

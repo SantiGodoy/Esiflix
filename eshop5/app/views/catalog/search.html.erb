@@ -1,0 +1,13 @@
+<p>
+  Introduzca el nombre (o parte del nombre) de la película que quiere buscar.
+</p>
+
+<%= render :partial => 'search_box' %>
+
+<% if @films %>
+    <p>
+      Resultado de la búsqueda '<%= params[:q] %>':
+      <%= pluralize @films.size, 'resultado', 'resultados' %>
+    </p>
+    <%= render(:partial => 'films') %>
+<% end %>
